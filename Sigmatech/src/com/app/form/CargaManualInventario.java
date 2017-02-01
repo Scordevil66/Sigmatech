@@ -8,9 +8,11 @@ package com.app.form;
 import com.app.controller.CiudadController;
 import com.app.controller.DepartamentoController;
 import com.app.controller.MarcaController;
+import com.app.controller.ModeloController;
 import com.app.models.Ciudad_TO;
 import com.app.models.Departamento_TO;
 import com.app.models.Marca_TO;
+import com.app.models.Modelo_TO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,13 +38,12 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
 
         try {
             List<Marca_TO> marcas = new ArrayList<>();
-//            List<Ciudad_TO> ciudades = new ArrayList<>();
+
 //           
             MarcaController marcaController = new MarcaController();
-//            DepartamentoController departamentoController = new DepartamentoController();
+
 //           
             marcas = marcaController.consultarMarca();
-//            ciudades = ciudadController.consultarCiudad();
 
             jComboBox1.addItem("Seleccione");
             jComboBox2.addItem("Seleccione");
@@ -66,7 +67,7 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
 //            jComboBox15.addItem("Seleccione");
 
             for (int i = 0; i < marcas.size(); i++) {
-                jComboBox1.addItem(marcas.get(i).getIdMarca()+ " - " + marcas.get(i).getMarca());
+                jComboBox1.addItem(marcas.get(i).getIdMarca() + " - " + marcas.get(i).getMarca());
             }
 //            for (int i = 0; i < ciudades.size(); i++) {
 //                jComboBox2.addItem(ciudades.get(i).getCdsCodCiudad() + " - " + ciudades.get(i).getCdsCiudad());
@@ -282,12 +283,34 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        jComboBox4.removeAllItems();
-        jComboBox4.addItem("Seleccione");
+        try {
+            jComboBox4.removeAllItems();
+            jComboBox4.addItem("Seleccione");
+            List<Modelo_TO> modelos = new ArrayList<>();
+            ModeloController modeloController = new ModeloController();
+
+            String idMarcaS = (String) jComboBox1.getSelectedItem();
+//            if (depIden.equals("Seleccione")) {
+//                srrhh.setRhCodDeptoIden(0);
+//            } else {
+            String[] idMarcaA = idMarcaS.split(" - ");
+            int idMarca = Integer.parseInt(idMarcaA[0]);
+
+//            }
+            modelos = modeloController.consultarModelo(idMarca);
+            
+            for (int i = 0; i < modelos.size(); i++) {
+                jComboBox4.addItem(modelos.get(i).getIdModelo()+ " - " + modelos.get(i).getNombreModelo());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CargaManualInventario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(CargaManualInventario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        
+
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
 
