@@ -17,7 +17,7 @@ public class Inventario_TO {
 
     private String equipo;
 
-    private String marca;
+    private Marca_TO marca;
 
     private String modelo;
 
@@ -25,7 +25,7 @@ public class Inventario_TO {
 
     private String nInventario;
 
-    private String servicio;
+    private Servicio_TO servicio;
 
     private Ubicacion_TO ubicacion;
 
@@ -35,7 +35,7 @@ public class Inventario_TO {
     public Inventario_TO() {
     }
 
-    public Inventario_TO(int idInventario, int itms, String equipo, String marca, String modelo, String serie, String nInventario, String servicio, Ubicacion_TO ubicacion, String Observaciones) {
+    public Inventario_TO(int idInventario, int itms, String equipo, Marca_TO marca, String modelo, String serie, String nInventario, Servicio_TO servicio, Ubicacion_TO ubicacion, String Observaciones) {
         this.idInventario = idInventario;
         this.itms = itms;
         this.equipo = equipo;
@@ -73,11 +73,11 @@ public class Inventario_TO {
         this.equipo = equipo;
     }
 
-    public String getMarca() {
+    public Marca_TO getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
+    public void setMarca(Marca_TO marca) {
         this.marca = marca;
     }
 
@@ -105,11 +105,11 @@ public class Inventario_TO {
         this.nInventario = nInventario;
     }
 
-    public String getServicio() {
+    public Servicio_TO getServicio() {
         return servicio;
     }
 
-    public void setServicio(String servicio) {
+    public void setServicio(Servicio_TO servicio) {
         this.servicio = servicio;
     }
 

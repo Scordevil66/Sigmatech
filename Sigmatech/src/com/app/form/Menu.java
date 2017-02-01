@@ -148,17 +148,15 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jM_CrearInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_CrearInventarioActionPerformed
-//        try {
-////            CargaManualUsuarios cmu = new CargaManualUsuarios();
-//
-//            dpnEscritorio.add(cmu);
-//            cmu.setMaximum(true);
-//            cmu.setVisible(true);
-//        } catch (PropertyVetoException ex) {
-//            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            CargaManualInventario cmu = new CargaManualInventario();
+
+            dpnEscritorio.add(cmu);
+            cmu.setMaximum(true);
+            cmu.setVisible(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jM_CrearInventarioActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
