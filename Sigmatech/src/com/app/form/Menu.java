@@ -5,6 +5,7 @@
  */
 package com.app.form;
 
+import com.app.utils.ImagenFondo;
 import java.beans.PropertyVetoException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -21,8 +22,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+        dpnEscritorio.setBorder(new ImagenFondo());
+        this.setExtendedState(Menu.MAXIMIZED_BOTH);
 
     }
 
@@ -53,7 +54,7 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
 
-        dpnEscritorio.setBackground(new java.awt.Color(26, 179, 181));
+        dpnEscritorio.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout dpnEscritorioLayout = new javax.swing.GroupLayout(dpnEscritorio);
         dpnEscritorio.setLayout(dpnEscritorioLayout);
