@@ -13,21 +13,27 @@ public class Inventario_TO {
 
     private int idInventario;
 
-    private int itms;
-
     private String equipo;
 
     private Marca_TO marca;
 
-    private String modelo;
+    private Serie_TO serie;
 
-    private String serie;
+    private Modelo_TO modelo;
 
     private String nInventario;
+
+    private EstadoInventario_TO estadoInventario;
 
     private Servicio_TO servicio;
 
     private Ubicacion_TO ubicacion;
+
+    private String imagen;
+
+    private Empresa_TO empresa;
+
+    private Area_TO area;
 
     private String Observaciones;
 
@@ -35,16 +41,19 @@ public class Inventario_TO {
     public Inventario_TO() {
     }
 
-    public Inventario_TO(int idInventario, int itms, String equipo, Marca_TO marca, String modelo, String serie, String nInventario, Servicio_TO servicio, Ubicacion_TO ubicacion, String Observaciones) {
+    public Inventario_TO(int idInventario, String equipo, Marca_TO marca, Serie_TO serie, Modelo_TO modelo, String nInventario, EstadoInventario_TO estadoInventario, Servicio_TO servicio, Ubicacion_TO ubicacion, String imagen, Empresa_TO empresa, Area_TO area, String Observaciones) {
         this.idInventario = idInventario;
-        this.itms = itms;
         this.equipo = equipo;
         this.marca = marca;
-        this.modelo = modelo;
         this.serie = serie;
+        this.modelo = modelo;
         this.nInventario = nInventario;
+        this.estadoInventario = estadoInventario;
         this.servicio = servicio;
         this.ubicacion = ubicacion;
+        this.imagen = imagen;
+        this.empresa = empresa;
+        this.area = area;
         this.Observaciones = Observaciones;
     }
 
@@ -55,14 +64,6 @@ public class Inventario_TO {
 
     public void setIdInventario(int idInventario) {
         this.idInventario = idInventario;
-    }
-
-    public int getItms() {
-        return itms;
-    }
-
-    public void setItms(int itms) {
-        this.itms = itms;
     }
 
     public String getEquipo() {
@@ -81,20 +82,20 @@ public class Inventario_TO {
         this.marca = marca;
     }
 
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public String getSerie() {
+    public Serie_TO getSerie() {
         return serie;
     }
 
-    public void setSerie(String serie) {
+    public void setSerie(Serie_TO serie) {
         this.serie = serie;
+    }
+
+    public Modelo_TO getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo_TO modelo) {
+        this.modelo = modelo;
     }
 
     public String getnInventario() {
@@ -103,6 +104,14 @@ public class Inventario_TO {
 
     public void setnInventario(String nInventario) {
         this.nInventario = nInventario;
+    }
+
+    public EstadoInventario_TO getEstadoInventario() {
+        return estadoInventario;
+    }
+
+    public void setEstadoInventario(EstadoInventario_TO estadoInventario) {
+        this.estadoInventario = estadoInventario;
     }
 
     public Servicio_TO getServicio() {
@@ -121,6 +130,30 @@ public class Inventario_TO {
         this.ubicacion = ubicacion;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public Empresa_TO getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa_TO empresa) {
+        this.empresa = empresa;
+    }
+
+    public Area_TO getArea() {
+        return area;
+    }
+
+    public void setArea(Area_TO area) {
+        this.area = area;
+    }
+
     public String getObservaciones() {
         return Observaciones;
     }
@@ -131,7 +164,7 @@ public class Inventario_TO {
 
     @Override
     public String toString() {
-        return "Inventario_TO{" + "idInventario=" + idInventario + ", itms=" + itms + ", equipo=" + equipo + ", marca=" + marca + ", modelo=" + modelo + ", serie=" + serie + ", nInventario=" + nInventario + ", servicio=" + servicio + ", ubicacion=" + ubicacion + ", Observaciones=" + Observaciones + '}';
+        return "Inventario_TO{" + "idInventario=" + idInventario + ", equipo=" + equipo + ", marca=" + marca + ", serie=" + serie + ", modelo=" + modelo + ", nInventario=" + nInventario + ", estadoInventario=" + estadoInventario + ", servicio=" + servicio + ", ubicacion=" + ubicacion + ", imagen=" + imagen + ", empresa=" + empresa + ", area=" + area + ", Observaciones=" + Observaciones + '}';
     }
 
 }
