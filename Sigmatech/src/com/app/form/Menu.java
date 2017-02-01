@@ -176,10 +176,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jM_CargaMasivaInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_CargaMasivaInventarioActionPerformed
-//        CargaMasivaUsuario cmau = new CargaMasivaUsuario();
-//        cmau.setLocationRelativeTo(null);
-////        dpnEscritorio.add(cmau);
-//        cmau.setVisible(true);
+        CargaMasivaInventario cmau = new CargaMasivaInventario();
+        cmau.setLocationRelativeTo(null);
+//        dpnEscritorio.add(cmau);
+        cmau.setVisible(true);
     }//GEN-LAST:event_jM_CargaMasivaInventarioActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
