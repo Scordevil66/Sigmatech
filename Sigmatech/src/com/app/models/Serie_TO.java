@@ -13,7 +13,7 @@ public class Serie_TO {
 
     private int idSerie;
 
-    private int idMarca;
+    private int idModelo;
 
     private String numeroSerie;
 
@@ -21,9 +21,9 @@ public class Serie_TO {
     public Serie_TO() {
     }
 
-    public Serie_TO(int idSerie, int idMarca, String numeroSerie) {
+    public Serie_TO(int idSerie, int idModelo, String numeroSerie) {
         this.idSerie = idSerie;
-        this.idMarca = idMarca;
+        this.idModelo = idModelo;
         this.numeroSerie = numeroSerie;
     }
 
@@ -36,12 +36,12 @@ public class Serie_TO {
         this.idSerie = idSerie;
     }
 
-    public int getIdMarca() {
-        return idMarca;
+    public int getIdModelo() {
+        return idModelo;
     }
 
-    public void setIdMarca(int idMarca) {
-        this.idMarca = idMarca;
+    public void setIdModelo(int idModelo) {
+        this.idModelo = idModelo;
     }
 
     public String getNumeroSerie() {
@@ -54,7 +54,7 @@ public class Serie_TO {
 
     @Override
     public String toString() {
-        return "Serie_TO{" + "idSerie=" + idSerie + ", idMarca=" + idMarca + ", numeroSerie=" + numeroSerie + '}';
+        return "Serie_TO{" + "idSerie=" + idSerie + ", idModelo=" + idModelo + ", numeroSerie=" + numeroSerie + '}';
     }
 
 }
