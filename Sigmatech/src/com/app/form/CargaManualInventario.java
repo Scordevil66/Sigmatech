@@ -5,6 +5,18 @@
  */
 package com.app.form;
 
+import com.app.controller.CiudadController;
+import com.app.controller.DepartamentoController;
+import com.app.controller.MarcaController;
+import com.app.models.Ciudad_TO;
+import com.app.models.Departamento_TO;
+import com.app.models.Marca_TO;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author user
@@ -14,9 +26,92 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
     /**
      * Creates new form CargaManualInventario
      */
-    public CargaManualInventario() {
+    public CargaManualInventario() throws SQLException {
         initComponents();
+
+        init();
     }
+
+    public void init() throws SQLException {
+
+        try {
+            List<Marca_TO> marcas = new ArrayList<>();
+//            List<Ciudad_TO> ciudades = new ArrayList<>();
+//           
+            MarcaController marcaController = new MarcaController();
+//            DepartamentoController departamentoController = new DepartamentoController();
+//           
+            marcas = marcaController.consultarMarca();
+//            ciudades = ciudadController.consultarCiudad();
+
+            jComboBox1.addItem("Seleccione");
+            jComboBox2.addItem("Seleccione");
+            jComboBox3.addItem("Seleccione");
+//            jComboBox4.addItem("Seleccione");
+            jComboBox5.addItem("Seleccione");
+            jComboBox6.addItem("Seleccione");
+            jComboBox7.addItem("Seleccione");
+//            jComboBox9.addItem("Seleccione");
+//            jComboBox10.addItem("Seleccione");
+//            jComboBox11.addItem("Seleccione");
+//            jComboBox12.addItem("Seleccione");
+//            jComboBox13.addItem("Seleccione");
+//            jComboBox14.addItem("Seleccione");
+//            jComboBox14.addItem("1");
+//            jComboBox14.addItem("2");
+//            jComboBox14.addItem("3");
+//            jComboBox14.addItem("4");
+//            jComboBox14.addItem("5");
+//            jComboBox14.addItem("6");
+//            jComboBox15.addItem("Seleccione");
+
+            for (int i = 0; i < marcas.size(); i++) {
+                jComboBox1.addItem(marcas.get(i).getIdMarca()+ " - " + marcas.get(i).getMarca());
+            }
+//            for (int i = 0; i < ciudades.size(); i++) {
+//                jComboBox2.addItem(ciudades.get(i).getCdsCodCiudad() + " - " + ciudades.get(i).getCdsCiudad());
+//            }
+//
+//            for (int i = 0; i < departamentos.size(); i++) {
+//                jComboBox3.addItem(departamentos.get(i).getCdsCodDepto() + " - " + departamentos.get(i).getCdsDepto());
+//            }
+//
+//            for (int i = 0; i < ciudades.size(); i++) {
+//                jComboBox4.addItem(ciudades.get(i).getCdsCodCiudad() + " - " + ciudades.get(i).getCdsCiudad());
+//            }
+//
+//            for (int i = 0; i < estadoCivil.size(); i++) {
+//                jComboBox6.addItem(estadoCivil.get(i).getSecCodigo() + " - " + estadoCivil.get(i).getSecDescripcion());
+//            }
+//
+//            for (int i = 0; i < estados.size(); i++) {
+//                jComboBox9.addItem(estados.get(i).getEstCodigo() + " - " + estados.get(i).getEstDescripcion());
+//            }
+//            for (int i = 0; i < cargos.size(); i++) {
+//                jComboBox10.addItem(cargos.get(i).getCarCodigo() + " - " + cargos.get(i).getCarDescripcion());
+//            }
+//
+//            for (int i = 0; i < cargos.size(); i++) {
+//                jComboBox11.addItem(cargos.get(i).getCarCodigo() + " - " + cargos.get(i).getCarDescripcion());
+//            }
+//
+//            for (int i = 0; i < departamentos.size(); i++) {
+//                jComboBox12.addItem(departamentos.get(i).getCdsCodDepto() + " - " + departamentos.get(i).getCdsDepto());
+//            }
+//
+//            for (int i = 0; i < ciudades.size(); i++) {
+//                jComboBox13.addItem(ciudades.get(i).getCdsCodCiudad() + " - " + ciudades.get(i).getCdsCiudad());
+//            }
+//            for (int i = 0; i < tViviendas.size(); i++) {
+//                jComboBox15.addItem(tViviendas.get(i).getStvCodigo() + " - " + tViviendas.get(i).getStvDescripion());
+//            }
+        } catch (Exception ex) {
+//            Logger.getLogger(CargaManualUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    ;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,13 +165,18 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Servicio:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Ubicación:");
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel10.setText("Area:");
 
@@ -84,15 +184,7 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
 
         jButton2.setText("Cancelar");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("Empresa:");
-
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel2.setText("Estado:");
 
         jLabel11.setText("Observación:");
 
@@ -188,6 +280,15 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        jComboBox4.removeAllItems();
+        jComboBox4.addItem("Seleccione");
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

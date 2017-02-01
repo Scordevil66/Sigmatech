@@ -15,13 +15,16 @@ public class Ciudad_TO {
 
     private String ciudad;
 
+    private int idDepartamento;
+
     //Constructores
     public Ciudad_TO() {
     }
 
-    public Ciudad_TO(int idCiudad, String ciudad) {
+    public Ciudad_TO(int idCiudad, String ciudad, int idDepartamento) {
         this.idCiudad = idCiudad;
         this.ciudad = ciudad;
+        this.idDepartamento = idDepartamento;
     }
 
     //Getters and Setters
@@ -41,9 +44,17 @@ public class Ciudad_TO {
         this.ciudad = ciudad;
     }
 
+    public int getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
+    }
+
     @Override
     public String toString() {
-        return "Ciudad_TO{" + "idCiudad=" + idCiudad + ", ciudad=" + ciudad + '}';
+        return "Ciudad_TO{" + "idCiudad=" + idCiudad + ", ciudad=" + ciudad + ", idDepartamento=" + idDepartamento + '}';
     }
 
 }
