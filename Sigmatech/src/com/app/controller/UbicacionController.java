@@ -6,7 +6,8 @@
 package com.app.controller;
 
 import com.app.conexion.ConexionSQL;
-import com.app.models.Serie_TO;
+import com.app.models.Marca_TO;
+import com.app.models.Ubicacion_TO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,31 +18,33 @@ import java.util.List;
  *
  * @author user
  */
-public class SerieController {
+public class UbicacionController {
     
-       Statement st;
+    
+        Statement st;
 
-    public SerieController() throws SQLException {
+    public void UbicacionController() throws SQLException {
         this.st = ConexionSQL.conexion();
     }
-        
     
-     public List<Serie_TO> consultarSerie(int idModelo) throws Exception {
+    
+     public List<Ubicacion_TO> consultarUbicacion() throws Exception {
+
+         UbicacionController();
          
-         
-        List<Serie_TO> series = new ArrayList<>();
-        
+        List<Ubicacion_TO> ubicaciones = new ArrayList<>();
+
         try {
 
-            String sql = "select  intIdSeries, intIdModelo,  varNumSerie "
-                    + "from series where intIdModelo = "+idModelo+";";
+            String sql = "select  intIdUbicacion, varNomUbicacion "
+                    + "from ubicacion;";
 
             ResultSet rs = null;
 
             rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                series.add(new Serie_TO(rs.getInt(1),rs.getInt(2), rs.getString(3)));
+                ubicaciones.add(new Ubicacion_TO(rs.getInt(1), rs.getString(2)));
 
             }
 
@@ -53,25 +56,25 @@ public class SerieController {
             ConexionSQL.CerrarConexion();
         }
 
-        return series;
+        return ubicaciones;
 
     }
 
-    public Serie_TO consultarSerieNombre(String nombre) throws Exception {
+    public Ubicacion_TO consultarUbicacionNombre(String nombre) throws Exception {
 
-        Serie_TO serie = new Serie_TO();
+        Ubicacion_TO ubicacion = new Ubicacion_TO();
 
         try {
 
-              String sql = "select  intIdSeries, intIdModelo,  varNumSerie "
-                    + "from series where varNumSerie = '"+nombre+"' ;";
+              String sql = "select  intIdUbicacion, varNomUbicacion "
+                    + "from ubicacion where varNomUbicacion = '"+nombre+"';";
 
             ResultSet rs = null;
 
             rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                serie = new Serie_TO(rs.getInt(1),rs.getInt(2), rs.getString(3));
+                ubicacion = new Ubicacion_TO(rs.getInt(1), rs.getString(2));
 
             }
 
@@ -83,7 +86,7 @@ public class SerieController {
             ConexionSQL.CerrarConexion();
         }
 
-        return serie;
+        return ubicacion;
 
     }
     

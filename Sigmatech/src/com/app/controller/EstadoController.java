@@ -6,7 +6,8 @@
 package com.app.controller;
 
 import com.app.conexion.ConexionSQL;
-import com.app.models.Serie_TO;
+import com.app.models.Area_TO;
+import com.app.models.EstadoInventario_TO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,31 +18,31 @@ import java.util.List;
  *
  * @author user
  */
-public class SerieController {
-    
-       Statement st;
+public class EstadoController {
 
-    public SerieController() throws SQLException {
+    Statement st;
+
+    public void EstadoController() throws SQLException {
         this.st = ConexionSQL.conexion();
     }
-        
-    
-     public List<Serie_TO> consultarSerie(int idModelo) throws Exception {
-         
-         
-        List<Serie_TO> series = new ArrayList<>();
-        
+
+    public List<EstadoInventario_TO> consultarEstadoInventario() throws Exception {
+
+        EstadoController();
+
+        List<EstadoInventario_TO> estados = new ArrayList<>();
+
         try {
 
-            String sql = "select  intIdSeries, intIdModelo,  varNumSerie "
-                    + "from series where intIdModelo = "+idModelo+";";
+            String sql = "select  intId, varEstadoInventario "
+                    + "from estadoinventario;";
 
             ResultSet rs = null;
 
             rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                series.add(new Serie_TO(rs.getInt(1),rs.getInt(2), rs.getString(3)));
+                estados.add(new EstadoInventario_TO(rs.getInt(1), rs.getString(2)));
 
             }
 
@@ -53,25 +54,25 @@ public class SerieController {
             ConexionSQL.CerrarConexion();
         }
 
-        return series;
+        return estados;
 
     }
 
-    public Serie_TO consultarSerieNombre(String nombre) throws Exception {
+    public EstadoInventario_TO consultarEstadoNombre(String nombre) throws Exception {
 
-        Serie_TO serie = new Serie_TO();
+        EstadoInventario_TO estadoInventario = new EstadoInventario_TO();
 
         try {
 
-              String sql = "select  intIdSeries, intIdModelo,  varNumSerie "
-                    + "from series where varNumSerie = '"+nombre+"' ;";
+            String sql = "select  intId, varEstadoInventario "
+                    + "from estadoinventario where varEstadoInventario = '"+nombre+"';";
 
             ResultSet rs = null;
 
             rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                serie = new Serie_TO(rs.getInt(1),rs.getInt(2), rs.getString(3));
+                estadoInventario = new EstadoInventario_TO(rs.getInt(1), rs.getString(2));
 
             }
 
@@ -83,8 +84,8 @@ public class SerieController {
             ConexionSQL.CerrarConexion();
         }
 
-        return serie;
+        return estadoInventario;
 
     }
-    
+
 }

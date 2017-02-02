@@ -6,7 +6,7 @@
 package com.app.controller;
 
 import com.app.conexion.ConexionSQL;
-import com.app.models.Serie_TO;
+import com.app.models.Servicio_TO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,31 +17,31 @@ import java.util.List;
  *
  * @author user
  */
-public class SerieController {
-    
-       Statement st;
+public class ServicioController {
 
-    public SerieController() throws SQLException {
+    Statement st;
+
+    public ServicioController() throws SQLException {
         this.st = ConexionSQL.conexion();
     }
+
+    public List<Servicio_TO> consultarServicio() throws Exception {
         
-    
-     public List<Serie_TO> consultarSerie(int idModelo) throws Exception {
-         
-         
-        List<Serie_TO> series = new ArrayList<>();
-        
+        this.st = ConexionSQL.conexion();
+
+        List<Servicio_TO> servicios = new ArrayList<>();
+
         try {
 
-            String sql = "select  intIdSeries, intIdModelo,  varNumSerie "
-                    + "from series where intIdModelo = "+idModelo+";";
+            String sql = " select intIdServicios, varNomServicio "
+                    + " from servicios ";
 
             ResultSet rs = null;
 
             rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                series.add(new Serie_TO(rs.getInt(1),rs.getInt(2), rs.getString(3)));
+                servicios.add(new Servicio_TO(rs.getInt(1), rs.getString(2)));
 
             }
 
@@ -53,25 +53,25 @@ public class SerieController {
             ConexionSQL.CerrarConexion();
         }
 
-        return series;
+        return servicios;
 
     }
 
-    public Serie_TO consultarSerieNombre(String nombre) throws Exception {
+    public Servicio_TO consultarServicioNombre(String nombre) throws Exception {
 
-        Serie_TO serie = new Serie_TO();
+        Servicio_TO servicio = new Servicio_TO();
 
         try {
 
-              String sql = "select  intIdSeries, intIdModelo,  varNumSerie "
-                    + "from series where varNumSerie = '"+nombre+"' ;";
+            String sql = "select  intIdServicios, varNomServicio "
+                    + "from servicios where varNomServicio = '"+nombre+"';";
 
             ResultSet rs = null;
 
             rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                serie = new Serie_TO(rs.getInt(1),rs.getInt(2), rs.getString(3));
+                servicio = new Servicio_TO(rs.getInt(1), rs.getString(2));
 
             }
 
@@ -83,8 +83,8 @@ public class SerieController {
             ConexionSQL.CerrarConexion();
         }
 
-        return serie;
+        return servicio;
 
     }
-    
+
 }

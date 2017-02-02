@@ -157,6 +157,8 @@ public class Menu extends javax.swing.JFrame {
             cmu.setVisible(true);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jM_CrearInventarioActionPerformed
 

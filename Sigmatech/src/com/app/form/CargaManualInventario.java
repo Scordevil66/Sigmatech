@@ -5,14 +5,24 @@
  */
 package com.app.form;
 
+import com.app.controller.AreaController;
 import com.app.controller.CiudadController;
 import com.app.controller.DepartamentoController;
+import com.app.controller.EstadoController;
 import com.app.controller.MarcaController;
 import com.app.controller.ModeloController;
+import com.app.controller.SerieController;
+import com.app.controller.ServicioController;
+import com.app.controller.UbicacionController;
+import com.app.models.Area_TO;
 import com.app.models.Ciudad_TO;
 import com.app.models.Departamento_TO;
+import com.app.models.EstadoInventario_TO;
 import com.app.models.Marca_TO;
 import com.app.models.Modelo_TO;
+import com.app.models.Serie_TO;
+import com.app.models.Servicio_TO;
+import com.app.models.Ubicacion_TO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,76 +48,51 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
 
         try {
             List<Marca_TO> marcas = new ArrayList<>();
-
+            List<Servicio_TO> servicios = new ArrayList<>();
+            List<Ubicacion_TO> ubicacion = new ArrayList<>();
+            List<Area_TO> areas = new ArrayList<>();
+            List<EstadoInventario_TO> estadoInventarios = new ArrayList<>();
+            
 //           
             MarcaController marcaController = new MarcaController();
-
+            ServicioController servicioController = new ServicioController();
+            UbicacionController ubicacionController = new UbicacionController();
+            AreaController areaController = new AreaController();
+            EstadoController estadoController = new EstadoController();
 //           
             marcas = marcaController.consultarMarca();
+            servicios = servicioController.consultarServicio();
+            ubicacion = ubicacionController.consultarUbicacion();
+            areas = areaController.consultarArea();
+            estadoInventarios = estadoController.consultarEstadoInventario();
 
             jComboBox1.addItem("Seleccione");
             jComboBox2.addItem("Seleccione");
             jComboBox3.addItem("Seleccione");
-//            jComboBox4.addItem("Seleccione");
-            jComboBox5.addItem("Seleccione");
             jComboBox6.addItem("Seleccione");
             jComboBox7.addItem("Seleccione");
-//            jComboBox9.addItem("Seleccione");
-//            jComboBox10.addItem("Seleccione");
-//            jComboBox11.addItem("Seleccione");
-//            jComboBox12.addItem("Seleccione");
-//            jComboBox13.addItem("Seleccione");
-//            jComboBox14.addItem("Seleccione");
-//            jComboBox14.addItem("1");
-//            jComboBox14.addItem("2");
-//            jComboBox14.addItem("3");
-//            jComboBox14.addItem("4");
-//            jComboBox14.addItem("5");
-//            jComboBox14.addItem("6");
-//            jComboBox15.addItem("Seleccione");
+
 
             for (int i = 0; i < marcas.size(); i++) {
                 jComboBox1.addItem(marcas.get(i).getIdMarca() + " - " + marcas.get(i).getMarca());
             }
-//            for (int i = 0; i < ciudades.size(); i++) {
-//                jComboBox2.addItem(ciudades.get(i).getCdsCodCiudad() + " - " + ciudades.get(i).getCdsCiudad());
-//            }
+
+            for (int i = 0; i < servicios.size(); i++) {
+                jComboBox2.addItem(servicios.get(i).getIdServicio() + " - " + servicios.get(i).getServicio());
+            }
+            for (int i = 0; i < ubicacion.size(); i++) {
+                jComboBox3.addItem(ubicacion.get(i).getIdUbicacion() + " - " + ubicacion.get(i).getUbicacion());
+            }
 //
-//            for (int i = 0; i < departamentos.size(); i++) {
-//                jComboBox3.addItem(departamentos.get(i).getCdsCodDepto() + " - " + departamentos.get(i).getCdsDepto());
-//            }
+            for (int i = 0; i < areas.size(); i++) {
+                jComboBox6.addItem(areas.get(i).getIdArea()+ " - " + areas.get(i).getArea());
+            }
 //
-//            for (int i = 0; i < ciudades.size(); i++) {
-//                jComboBox4.addItem(ciudades.get(i).getCdsCodCiudad() + " - " + ciudades.get(i).getCdsCiudad());
-//            }
-//
-//            for (int i = 0; i < estadoCivil.size(); i++) {
-//                jComboBox6.addItem(estadoCivil.get(i).getSecCodigo() + " - " + estadoCivil.get(i).getSecDescripcion());
-//            }
-//
-//            for (int i = 0; i < estados.size(); i++) {
-//                jComboBox9.addItem(estados.get(i).getEstCodigo() + " - " + estados.get(i).getEstDescripcion());
-//            }
-//            for (int i = 0; i < cargos.size(); i++) {
-//                jComboBox10.addItem(cargos.get(i).getCarCodigo() + " - " + cargos.get(i).getCarDescripcion());
-//            }
-//
-//            for (int i = 0; i < cargos.size(); i++) {
-//                jComboBox11.addItem(cargos.get(i).getCarCodigo() + " - " + cargos.get(i).getCarDescripcion());
-//            }
-//
-//            for (int i = 0; i < departamentos.size(); i++) {
-//                jComboBox12.addItem(departamentos.get(i).getCdsCodDepto() + " - " + departamentos.get(i).getCdsDepto());
-//            }
-//
-//            for (int i = 0; i < ciudades.size(); i++) {
-//                jComboBox13.addItem(ciudades.get(i).getCdsCodCiudad() + " - " + ciudades.get(i).getCdsCiudad());
-//            }
-//            for (int i = 0; i < tViviendas.size(); i++) {
-//                jComboBox15.addItem(tViviendas.get(i).getStvCodigo() + " - " + tViviendas.get(i).getStvDescripion());
-//            }
+            for (int i = 0; i < estadoInventarios.size(); i++) {
+                jComboBox7.addItem(estadoInventarios.get(i).getIdEstado()+ " - " + estadoInventarios.get(i).getEstadoInventario());
+            }
+
         } catch (Exception ex) {
-//            Logger.getLogger(CargaManualUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -177,6 +162,12 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             }
         });
 
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
         jLabel9.setText("Ubicación:");
 
         jLabel10.setText("Area:");
@@ -184,6 +175,12 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
         jButton1.setText("Registrar");
 
         jButton2.setText("Cancelar");
+
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Estado:");
 
@@ -298,9 +295,9 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
 
 //            }
             modelos = modeloController.consultarModelo(idMarca);
-            
+
             for (int i = 0; i < modelos.size(); i++) {
-                jComboBox4.addItem(modelos.get(i).getIdModelo()+ " - " + modelos.get(i).getNombreModelo());
+                jComboBox4.addItem(modelos.get(i).getIdModelo() + " - " + modelos.get(i).getNombreModelo());
             }
         } catch (SQLException ex) {
             Logger.getLogger(CargaManualInventario.class.getName()).log(Level.SEVERE, null, ex);
@@ -312,6 +309,37 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
 
     }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        try {
+            jComboBox5.removeAllItems();
+            jComboBox5.addItem("Seleccione");
+            List<Serie_TO> series = new ArrayList<>();
+            SerieController serieController = new SerieController();
+
+            String idModeloS = (String) jComboBox4.getSelectedItem();
+//            if (depIden.equals("Seleccione")) {
+//                srrhh.setRhCodDeptoIden(0);
+//            } else {
+            String[] idModeloA = idModeloS.split(" - ");
+            int idModelo = Integer.parseInt(idModeloA[0]);
+
+//            }
+            series = serieController.consultarSerie(idModelo);
+
+            for (int i = 0; i < series.size(); i++) {
+                jComboBox5.addItem(series.get(i).getIdSerie() + " - " + series.get(i).getNumeroSerie());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CargaManualInventario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(CargaManualInventario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
