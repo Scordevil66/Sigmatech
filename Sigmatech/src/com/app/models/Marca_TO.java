@@ -24,6 +24,10 @@ public class Marca_TO {
         this.marca = marca;
     }
 
+    public Marca_TO(int idMarca) {
+        this.idMarca = idMarca;
+    }
+
     //Getters and Setters
     public int getIdMarca() {
         return idMarca;

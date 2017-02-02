@@ -24,6 +24,10 @@ public class EstadoInventario_TO {
         this.estadoInventario = estadoInventario;
     }
 
+    public EstadoInventario_TO(int idEstado) {
+        this.idEstado = idEstado;
+    }
+
     //Getters and Setters
     public int getIdEstado() {
         return idEstado;

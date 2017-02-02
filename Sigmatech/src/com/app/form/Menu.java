@@ -150,7 +150,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jM_CrearInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_CrearInventarioActionPerformed
         try {
-            CargaManualInventario cmu = new CargaManualInventario();
+                CargaManualInventario cmu = new CargaManualInventario();
 
             dpnEscritorio.add(cmu);
             cmu.setMaximum(true);

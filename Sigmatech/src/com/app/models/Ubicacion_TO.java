@@ -24,6 +24,10 @@ public class Ubicacion_TO {
         this.ubicacion = ubicacion;
     }
 
+    public Ubicacion_TO(int idUbicacion) {
+        this.idUbicacion = idUbicacion;
+    }
+
     //Getters and Setters
     public int getIdUbicacion() {
         return idUbicacion;

@@ -27,6 +27,10 @@ public class Serie_TO {
         this.numeroSerie = numeroSerie;
     }
 
+    public Serie_TO(int idSerie) {
+        this.idSerie = idSerie;
+    }
+
     //Getters and Setters
     public int getIdSerie() {
         return idSerie;

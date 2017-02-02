@@ -24,6 +24,10 @@ public class Area_TO {
         this.area = area;
     }
 
+    public Area_TO(int idArea) {
+        this.idArea = idArea;
+    }
+
     //Getters and Setters
     public int getIdArea() {
         return idArea;

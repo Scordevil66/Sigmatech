@@ -27,6 +27,10 @@ public class Modelo_TO {
         this.nombreModelo = nombreModelo;
     }
 
+    public Modelo_TO(int idModelo) {
+        this.idModelo = idModelo;
+    }
+
     //Getters and Setters
     public int getIdModelo() {
         return idModelo;

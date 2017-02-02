@@ -24,6 +24,10 @@ public class Servicio_TO {
         this.servicio = servicio;
     }
 
+    public Servicio_TO(int idServicio) {
+        this.idServicio = idServicio;
+    }
+
     //Getters and Setters
     public int getIdServicio() {
         return idServicio;

@@ -9,6 +9,7 @@ import com.app.controller.AreaController;
 import com.app.controller.CiudadController;
 import com.app.controller.DepartamentoController;
 import com.app.controller.EstadoController;
+import com.app.controller.InventarioController;
 import com.app.controller.MarcaController;
 import com.app.controller.ModeloController;
 import com.app.controller.SerieController;
@@ -18,16 +19,20 @@ import com.app.models.Area_TO;
 import com.app.models.Ciudad_TO;
 import com.app.models.Departamento_TO;
 import com.app.models.EstadoInventario_TO;
+import com.app.models.Inventario_TO;
 import com.app.models.Marca_TO;
 import com.app.models.Modelo_TO;
 import com.app.models.Serie_TO;
 import com.app.models.Servicio_TO;
 import com.app.models.Ubicacion_TO;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,7 +57,7 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             List<Ubicacion_TO> ubicacion = new ArrayList<>();
             List<Area_TO> areas = new ArrayList<>();
             List<EstadoInventario_TO> estadoInventarios = new ArrayList<>();
-            
+
 //           
             MarcaController marcaController = new MarcaController();
             ServicioController servicioController = new ServicioController();
@@ -72,7 +77,6 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             jComboBox6.addItem("Seleccione");
             jComboBox7.addItem("Seleccione");
 
-
             for (int i = 0; i < marcas.size(); i++) {
                 jComboBox1.addItem(marcas.get(i).getIdMarca() + " - " + marcas.get(i).getMarca());
             }
@@ -85,11 +89,11 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             }
 //
             for (int i = 0; i < areas.size(); i++) {
-                jComboBox6.addItem(areas.get(i).getIdArea()+ " - " + areas.get(i).getArea());
+                jComboBox6.addItem(areas.get(i).getIdArea() + " - " + areas.get(i).getArea());
             }
 //
             for (int i = 0; i < estadoInventarios.size(); i++) {
-                jComboBox7.addItem(estadoInventarios.get(i).getIdEstado()+ " - " + estadoInventarios.get(i).getEstadoInventario());
+                jComboBox7.addItem(estadoInventarios.get(i).getIdEstado() + " - " + estadoInventarios.get(i).getEstadoInventario());
             }
 
         } catch (Exception ex) {
@@ -173,6 +177,11 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
         jLabel10.setText("Area:");
 
         jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
 
@@ -287,13 +296,9 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             ModeloController modeloController = new ModeloController();
 
             String idMarcaS = (String) jComboBox1.getSelectedItem();
-//            if (depIden.equals("Seleccione")) {
-//                srrhh.setRhCodDeptoIden(0);
-//            } else {
             String[] idMarcaA = idMarcaS.split(" - ");
             int idMarca = Integer.parseInt(idMarcaA[0]);
 
-//            }
             modelos = modeloController.consultarModelo(idMarca);
 
             for (int i = 0; i < modelos.size(); i++) {
@@ -318,13 +323,9 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             SerieController serieController = new SerieController();
 
             String idModeloS = (String) jComboBox4.getSelectedItem();
-//            if (depIden.equals("Seleccione")) {
-//                srrhh.setRhCodDeptoIden(0);
-//            } else {
             String[] idModeloA = idModeloS.split(" - ");
             int idModelo = Integer.parseInt(idModeloA[0]);
 
-//            }
             series = serieController.consultarSerie(idModelo);
 
             for (int i = 0; i < series.size(); i++) {
@@ -340,6 +341,125 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Inventario_TO inventario = new Inventario_TO();
+
+        InventarioController inventarioController = null;
+        inventarioController = new InventarioController();
+
+        if (!(jTextField6.getText().equals(""))) {
+
+            inventario.setEquipo((jTextField2.getText()));
+            inventario.setnInventario(jTextField6.getText());
+            inventario.setObservaciones(jTextField1.getText());
+
+            String idMarcaS = (String) jComboBox1.getSelectedItem();
+
+            if (idMarcaS.equals("Seleccione")) {
+                inventario.getMarca().setIdMarca(0);
+            } else {
+                String[] idMarcaA = idMarcaS.split(" - ");
+                int idMarca = Integer.parseInt(idMarcaA[0]);
+                Marca_TO marca = new Marca_TO(idMarca);
+                inventario.setMarca(marca);
+            }
+
+            String idModeloS = (String) jComboBox4.getSelectedItem();
+
+            if (idModeloS.equals("Seleccione")) {
+                inventario.getModelo().setIdModelo(0);
+            } else {
+                String[] idModeloA = idModeloS.split(" - ");
+                int idModelo = Integer.parseInt(idModeloA[0]);
+                Modelo_TO modelo = new Modelo_TO(idModelo);
+                inventario.setModelo(modelo);
+            }
+
+            String idSerieS = (String) jComboBox5.getSelectedItem();
+
+            if (idSerieS.equals("Seleccione")) {
+                inventario.getSerie().setIdSerie(0);
+            } else {
+                String[] idSerieA = idSerieS.split(" - ");
+                int idSerie = Integer.parseInt(idSerieA[0]);
+                Serie_TO serie = new Serie_TO(idSerie);
+                inventario.setSerie(serie);
+            }
+
+            String idServicioS = (String) jComboBox2.getSelectedItem();
+
+            if (idServicioS.equals("Seleccione")) {
+                inventario.getServicio().setIdServicio(0);
+            } else {
+                String[] idServicioA = idServicioS.split(" - ");
+                int idServicio = Integer.parseInt(idServicioA[0]);
+                Servicio_TO servicio = new Servicio_TO(idServicio);
+                inventario.setServicio(servicio);
+            }
+
+            String idUbicacionS = (String) jComboBox3.getSelectedItem();
+
+            if (idUbicacionS.equals("Seleccione")) {
+                inventario.getUbicacion().setIdUbicacion(0);
+            } else {
+                String[] idUbicacionA = idUbicacionS.split(" - ");
+                int idUbicacion = Integer.parseInt(idUbicacionA[0]);
+                Ubicacion_TO ubicacion = new Ubicacion_TO(idUbicacion);
+                inventario.setUbicacion(ubicacion);
+            }
+
+            String idAreaS = (String) jComboBox6.getSelectedItem();
+
+            if (idAreaS.equals("Seleccione")) {
+                inventario.getArea().setIdArea(0);
+            } else {
+                String[] idAreaA = idAreaS.split(" - ");
+                int idArea = Integer.parseInt(idAreaA[0]);
+                Area_TO area = new Area_TO(idArea);
+                inventario.setArea(area);
+            }
+
+            String idEstadoS = (String) jComboBox7.getSelectedItem();
+
+            if (idEstadoS.equals("Seleccione")) {
+                inventario.getEstadoInventario().setIdEstado(0);
+            } else {
+                String[] idEstadoA = idEstadoS.split(" - ");
+                int idEstado = Integer.parseInt(idEstadoA[0]);
+                EstadoInventario_TO estado = new EstadoInventario_TO(idEstado);
+                inventario.setEstadoInventario(estado);
+            }
+
+            try {
+                int valor = inventarioController.registrarInventario(inventario);
+                if (valor > 0) {
+                    JOptionPane.showMessageDialog(null, "Registro realizado satisfactoriamente");
+
+                    jTextField2.setText("");
+                    jTextField6.setText("");
+                    jTextField1.setText("");
+                    jComboBox1.setSelectedIndex(0);
+                    jComboBox2.setSelectedIndex(0);
+                    jComboBox3.setSelectedIndex(0);
+                    jComboBox6.setSelectedIndex(0);
+                    jComboBox7.setSelectedIndex(0);
+                    jComboBox4.removeAllItems();
+                    jComboBox4.addItem("Seleccione");
+                    jComboBox5.removeAllItems();
+                    jComboBox5.addItem("Seleccione");
+
+                }
+            } catch (Exception ex) {
+               
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El número de Inventario no puede estar vacio");
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
