@@ -358,7 +358,8 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             String idMarcaS = (String) jComboBox1.getSelectedItem();
 
             if (idMarcaS.equals("Seleccione")) {
-                inventario.getMarca().setIdMarca(0);
+                Marca_TO marca = new Marca_TO(0);
+                inventario.setMarca(marca);
             } else {
                 String[] idMarcaA = idMarcaS.split(" - ");
                 int idMarca = Integer.parseInt(idMarcaA[0]);
@@ -369,7 +370,8 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             String idModeloS = (String) jComboBox4.getSelectedItem();
 
             if (idModeloS.equals("Seleccione")) {
-                inventario.getModelo().setIdModelo(0);
+                Modelo_TO modelo = new Modelo_TO(0);
+                inventario.setModelo(modelo);
             } else {
                 String[] idModeloA = idModeloS.split(" - ");
                 int idModelo = Integer.parseInt(idModeloA[0]);
@@ -380,7 +382,8 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             String idSerieS = (String) jComboBox5.getSelectedItem();
 
             if (idSerieS.equals("Seleccione")) {
-                inventario.getSerie().setIdSerie(0);
+                Serie_TO serie = new Serie_TO(0);
+                inventario.setSerie(serie);
             } else {
                 String[] idSerieA = idSerieS.split(" - ");
                 int idSerie = Integer.parseInt(idSerieA[0]);
@@ -391,7 +394,8 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             String idServicioS = (String) jComboBox2.getSelectedItem();
 
             if (idServicioS.equals("Seleccione")) {
-                inventario.getServicio().setIdServicio(0);
+                Servicio_TO servicio = new Servicio_TO(0);
+                inventario.setServicio(servicio);
             } else {
                 String[] idServicioA = idServicioS.split(" - ");
                 int idServicio = Integer.parseInt(idServicioA[0]);
@@ -402,7 +406,8 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             String idUbicacionS = (String) jComboBox3.getSelectedItem();
 
             if (idUbicacionS.equals("Seleccione")) {
-                inventario.getUbicacion().setIdUbicacion(0);
+                Ubicacion_TO ubicacion = new Ubicacion_TO(0);
+                inventario.setUbicacion(ubicacion);
             } else {
                 String[] idUbicacionA = idUbicacionS.split(" - ");
                 int idUbicacion = Integer.parseInt(idUbicacionA[0]);
@@ -413,7 +418,8 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             String idAreaS = (String) jComboBox6.getSelectedItem();
 
             if (idAreaS.equals("Seleccione")) {
-                inventario.getArea().setIdArea(0);
+               Area_TO area = new Area_TO(0);
+                inventario.setArea(area);
             } else {
                 String[] idAreaA = idAreaS.split(" - ");
                 int idArea = Integer.parseInt(idAreaA[0]);
@@ -424,7 +430,8 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
             String idEstadoS = (String) jComboBox7.getSelectedItem();
 
             if (idEstadoS.equals("Seleccione")) {
-                inventario.getEstadoInventario().setIdEstado(0);
+                EstadoInventario_TO estado = new EstadoInventario_TO(0);
+                inventario.setEstadoInventario(estado);
             } else {
                 String[] idEstadoA = idEstadoS.split(" - ");
                 int idEstado = Integer.parseInt(idEstadoA[0]);

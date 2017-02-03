@@ -6,13 +6,17 @@
 package com.app.form;
 
 //import com.app.utils.LeerArchivoDeExcel;
+import com.app.controller.AreaController;
+import com.app.models.Area_TO;
+import com.app.utils.LeerArchivoDeExcel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -30,15 +34,23 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
     /**
      * Creates new form CargaMasivaUsuario
      */
-    public CargaMasivaInventario() {
+    public CargaMasivaInventario() throws Exception {
         initComponents();
 
         init();
     }
 
-    public void init() {
+    public void init() throws Exception {
 
         lPath.setVisible(false);
+        List<Area_TO> areas = new ArrayList<>();
+        AreaController areaController = new AreaController();
+        areas = areaController.consultarArea();
+        jComboBox1.addItem("Seleccione");
+
+        for (int i = 0; i < areas.size(); i++) {
+            jComboBox1.addItem(areas.get(i).getIdArea() + " - " + areas.get(i).getArea());
+        }
     }
 
     public void SeleccionArchivo() {
@@ -47,9 +59,9 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
         vn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JFileChooser se = new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV", "csv");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("XLS", "xls");
         se.setFileFilter(filtro);
-        
+
         JLabel ruta = new JLabel("");
         JLabel nombreArchivo = new JLabel("");
 
@@ -72,7 +84,7 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
                     String formato1 = forms[0];
                     String formato = forms[1];
 
-                    if (!(formato.equals("csv"))) {
+                    if (!(formato.equals("xls"))) {
                         lPath.setText("");
                         l_nombre.setText("");
                         bAceptar.setEnabled(false);
@@ -85,7 +97,7 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
                         vn.setVisible(false);
                     }
 
-//                            LeerArchivoDeExcel lae = new LeerArchivoDeExcel();
+                    LeerArchivoDeExcel lae = new LeerArchivoDeExcel();
 //                            try {
 //                                lae.CargaDeFormularios(ruta.getText());
 //                            } catch (IOException ex) {
@@ -128,6 +140,8 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
         lPath = new javax.swing.JLabel();
         bAceptar = new javax.swing.JButton();
         l_nombre = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         jFileChooser2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +186,8 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Seleccione Area");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,39 +197,42 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(lPath, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(l_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(99, 99, 99)
-                                        .addComponent(lPath, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(bAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel1)))
-                .addContainerGap())
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(4, 4, 4)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(l_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bAceptar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lPath, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -230,22 +249,38 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
 
-//        try {
-//            int valor = LeerArchivoDeExcel.CargaDeFormularios(lPath.getText());
+        try {
+            
+            int idArea = 0;
 
-//            if (valor > 0) {
-//                JOptionPane.showMessageDialog(null, "Registro realizado satisfactoriamente");
-//
-//                l_nombre.setText("");
-//                bAceptar.setEnabled(false);
-//
-//            }
+            String idAreaS = (String) jComboBox1.getSelectedItem();
 
-//        } catch (IOException ex) {
-//            Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+            if (idAreaS.equals("")) {
+                idArea = 0;
+            } else {
+                String[] idAreaA = idAreaS.split(" - ");
+                idArea = Integer.parseInt(idAreaA[0]);
+                Area_TO area = new Area_TO(idArea);
+                
+            }
+            
+            int valor = LeerArchivoDeExcel.RegistrarInventario(lPath.getText(), idArea);
+
+            if (valor > 0) {
+                JOptionPane.showMessageDialog(null, "Registro realizado satisfactoriamente");
+
+                l_nombre.setText("");
+                bAceptar.setEnabled(false);
+
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -279,7 +314,11 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CargaMasivaInventario().setVisible(true);
+                try {
+                    new CargaMasivaInventario().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
         });
@@ -288,10 +327,12 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFileChooser jFileChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lPath;
     private javax.swing.JLabel l_nombre;
     // End of variables declaration//GEN-END:variables
