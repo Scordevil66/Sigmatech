@@ -292,6 +292,7 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
         try {
             jComboBox4.removeAllItems();
             jComboBox4.addItem("Seleccione");
+            jComboBox4.addItem("0 - No Aplica");
             List<Modelo_TO> modelos = new ArrayList<>();
             ModeloController modeloController = new ModeloController();
 
@@ -319,6 +320,8 @@ public class CargaManualInventario extends javax.swing.JInternalFrame {
         try {
             jComboBox5.removeAllItems();
             jComboBox5.addItem("Seleccione");
+            jComboBox5.addItem("0 - No Disponible");
+            
             List<Serie_TO> series = new ArrayList<>();
             SerieController serieController = new SerieController();
 
