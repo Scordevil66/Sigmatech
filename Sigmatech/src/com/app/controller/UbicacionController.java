@@ -62,12 +62,14 @@ public class UbicacionController {
 
     public Ubicacion_TO consultarUbicacionNombre(String nombre) throws Exception {
 
+        UbicacionController();
+        
         Ubicacion_TO ubicacion = new Ubicacion_TO();
 
         try {
 
               String sql = "select  intIdUbicacion, varNomUbicacion "
-                    + "from ubicacion where varNomUbicacion = '"+nombre+"';";
+                    + "from ubicacion where varNomUbicacion = '"+nombre.trim()+"';";
 
             ResultSet rs = null;
 

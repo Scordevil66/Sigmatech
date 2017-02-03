@@ -271,6 +271,7 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
 
                 l_nombre.setText("");
                 bAceptar.setEnabled(false);
+                jComboBox1.setSelectedIndex(0);
 
             }
 

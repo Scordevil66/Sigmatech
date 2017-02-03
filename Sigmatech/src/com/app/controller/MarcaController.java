@@ -63,7 +63,7 @@ public class MarcaController {
         try {
 
               String sql = "select  intIdMarca, varNombreMarca "
-                    + "from marca where varNombreMarca = '"+nombre+"';";
+                    + "from marca where varNombreMarca = '"+nombre.trim()+"';";
 
             ResultSet rs = null;
 

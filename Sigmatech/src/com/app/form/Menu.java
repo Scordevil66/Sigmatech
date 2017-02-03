@@ -47,7 +47,6 @@ public class Menu extends javax.swing.JFrame {
         jM_CargaMasivaInventario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -114,21 +113,13 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu2.setText("Hojas de Vida");
 
-        jMenuItem3.setText("Actualizar Vacaciones");
+        jMenuItem3.setText("Carga Masiva Hojas");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuItem3);
-
-        jMenuItem4.setText("Actualización Masiva");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
 
@@ -150,7 +141,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jM_CrearInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_CrearInventarioActionPerformed
         try {
-                CargaManualInventario cmu = new CargaManualInventario();
+            CargaManualInventario cmu = new CargaManualInventario();
 
             dpnEscritorio.add(cmu);
             cmu.setMaximum(true);
@@ -179,18 +170,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jM_CargaMasivaInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_CargaMasivaInventarioActionPerformed
-        CargaMasivaInventario cmau = new CargaMasivaInventario();
-        cmau.setLocationRelativeTo(null);
+        try {
+            CargaMasivaInventario cmau = new CargaMasivaInventario();
+            cmau.setLocationRelativeTo(null);
 //        dpnEscritorio.add(cmau);
-        cmau.setVisible(true);
+            cmau.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jM_CargaMasivaInventarioActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-//        CargaMasivaVacaciones cmav = new CargaMasivaVacaciones();
-//        cmav.setLocationRelativeTo(null);
-////        dpnEscritorio.add(cmav);
-//        cmav.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jM_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_SalirActionPerformed
         System.exit(0);
@@ -249,6 +237,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }

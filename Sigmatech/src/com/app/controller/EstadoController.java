@@ -60,6 +60,8 @@ public class EstadoController {
 
     public EstadoInventario_TO consultarEstadoNombre(String nombre) throws Exception {
 
+         EstadoController();
+        
         EstadoInventario_TO estadoInventario = new EstadoInventario_TO();
 
         try {
