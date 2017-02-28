@@ -29,12 +29,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author win
  */
-public class CargaMasivaInventario extends javax.swing.JFrame {
+public class CargaMasivaHojaDeVida extends javax.swing.JFrame {
 
     /**
      * Creates new form CargaMasivaUsuario
      */
-    public CargaMasivaInventario() throws Exception {
+    public CargaMasivaHojaDeVida() throws Exception {
         initComponents();
 
         init();
@@ -46,11 +46,6 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
         List<Area_TO> areas = new ArrayList<>();
         AreaController areaController = new AreaController();
         areas = areaController.consultarArea();
-        jComboBox1.addItem("Seleccione");
-
-        for (int i = 0; i < areas.size(); i++) {
-            jComboBox1.addItem(areas.get(i).getIdArea() + " - " + areas.get(i).getArea());
-        }
     }
 
     public void SeleccionArchivo() {
@@ -140,8 +135,6 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
         lPath = new javax.swing.JLabel();
         bAceptar = new javax.swing.JButton();
         l_nombre = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
 
         jFileChooser2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +160,7 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel1.setText("Carga Masiva de Inventarios");
+        jLabel1.setText("Carga Masiva de Hoja de Vida");
 
         jLabel2.setText("Seleccione el Archivo: ");
 
@@ -188,54 +181,49 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Seleccione Area");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(lPath, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(bAceptar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(l_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(jLabel1)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(l_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(lPath, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(80, 80, 80))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(4, 4, 4)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(l_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bAceptar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lPath, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(l_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bAceptar))
+                    .addComponent(lPath, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -251,40 +239,28 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
-        try {
-            
-            int idArea = 0;
-
-            String idAreaS = (String) jComboBox1.getSelectedItem();
-
-            if (idAreaS.equals("")) {
-                idArea = 0;
-            } else {
-                String[] idAreaA = idAreaS.split(" - ");
-                idArea = Integer.parseInt(idAreaA[0]);
-                Area_TO area = new Area_TO(idArea);
-                
-            }
-            
-            int valor = LeerArchivoDeExcel.RegistrarInventario(lPath.getText(), idArea);
-
-            if (valor > 0) {
-                JOptionPane.showMessageDialog(null, "Registro realizado satisfactoriamente");
-
-                l_nombre.setText("");
-                bAceptar.setEnabled(false);
-                jComboBox1.setSelectedIndex(0);
-
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//
+//        try {
+//            
+//          
+//            int valor = LeerArchivoDeExcel.RegistrarInventario(lPath.getText());
+//
+//            if (valor > 0) {
+//                JOptionPane.showMessageDialog(null, "Registro realizado satisfactoriamente");
+//
+//                l_nombre.setText("");
+//                bAceptar.setEnabled(false);
+//               
+//
+//            }
+//
+//        } catch (IOException ex) {
+//            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (Exception ex) {
+//            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -319,9 +295,9 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new CargaMasivaInventario().setVisible(true);
+                    new CargaMasivaHojaDeVida().setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(CargaMasivaInventario.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -331,12 +307,10 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFileChooser jFileChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lPath;
     private javax.swing.JLabel l_nombre;
     // End of variables declaration//GEN-END:variables

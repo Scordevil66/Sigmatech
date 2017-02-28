@@ -68,6 +68,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu5.setText("Inicio");
 
+        jM_CambioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CambioUsuario.png"))); // NOI18N
         jM_CambioMenu.setText("Cambio de Usuario");
         jM_CambioMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +77,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu5.add(jM_CambioMenu);
 
+        jM_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Salir.png"))); // NOI18N
         jM_Salir.setText("Salir");
         jM_Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +95,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jM_CrearInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Aceptar.png"))); // NOI18N
         jM_CrearInventario.setText("Crear");
         jM_CrearInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +104,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(jM_CrearInventario);
 
+        jM_CargaMasivaInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CargarArchivos.png"))); // NOI18N
         jM_CargaMasivaInventario.setText("Carga Masiva");
         jM_CargaMasivaInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +117,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu2.setText("Hojas de Vida");
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CargarArchivos.png"))); // NOI18N
         jMenuItem3.setText("Carga Masiva Hojas");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,15 +159,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jM_CrearInventarioActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-//        ActualizacionManualVacaciones cmv = new ActualizacionManualVacaciones();
-//        dpnEscritorio.add(cmv);
-//        try {
-//            cmv.setMaximum(true);
-//        } catch (PropertyVetoException ex) {
-//            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        cmv.setVisible(true);
-
+        try {
+            CargaMasivaHojaDeVida cmau = new CargaMasivaHojaDeVida();
+            cmau.setLocationRelativeTo(null);
+//        dpnEscritorio.add(cmau);
+            cmau.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed

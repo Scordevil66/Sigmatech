@@ -20,6 +20,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jM_CambioMenu">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/CambioUsuario.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cambio de Usuario"/>
               </Properties>
               <Events>
@@ -28,6 +31,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jM_Salir">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/Salir.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
               <Events>
@@ -46,6 +52,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jM_CrearInventario">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/Aceptar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Crear"/>
               </Properties>
               <Events>
@@ -54,6 +63,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jM_CargaMasivaInventario">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/CargarArchivos.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Carga Masiva"/>
               </Properties>
               <Events>
@@ -69,6 +81,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/CargarArchivos.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Carga Masiva Hojas"/>
               </Properties>
               <Events>
