@@ -25,7 +25,7 @@ public class HojaDeVidaController {
      public int registrarHojaDeVida(HojaDeVida_TO hojaDeVida) throws Exception {
 
         InventarioController();
-        int inv = 0;
+        int hoja = 0;
 
         try {
 
@@ -50,38 +50,39 @@ public class HojaDeVidaController {
                     + " `cronogramaMantenimientoGarantia`, `guiaRapidaOperacion`, `actaReciboSatisfacionOperador`, "
                     + " `recomendacionesFrabricanteUsoAccesoriosConsumibles`, `recomendacionesFabricanteCalibracion`,"
                     + "  `estimativoCostoAccesoriosConsumibles`)"
-                    + " VALUES ('calle', '123', 'prueba', '12', "
-                    + " 'a', 'a', 'a',"
-                    + "  'a', 'a', 'a',"
-                    + "  'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a',"
-                    + "  'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a',"
-                    + "  'a', 'a', 'a',"
-                    + "  'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a',"
-                    + "  'a', 'a', 'a', "
-                    + " 'a', 'a', 'a', "
-                    + " 'a', 'a', 'a',"
-                    + "  'a', 'a', 'a');";
+                    + " VALUES ('"+hojaDeVida.getDireccion()+"', '"+hojaDeVida.getTelefono()+"', '"+hojaDeVida.getEmail()+"', '"+hojaDeVida.getCodigoEquipo()+"', "
+                    + " '"+hojaDeVida.getRs()+"', '"+hojaDeVida.getCodigoPrestado()+"', '"+hojaDeVida.getSede()+"',"
+                    + "  '"+hojaDeVida.getDistintivo()+"', '"+hojaDeVida.getSerie()+"', '"+hojaDeVida.getInvActivo()+"',"
+                    + "  '"+hojaDeVida.getEquipo()+"', '"+hojaDeVida.getMarca()+"', '"+hojaDeVida.getModelo()+"', "
+                    + " '"+hojaDeVida.getTipo()+"', '"+hojaDeVida.getServicio()+"', '"+hojaDeVida.getUbicacion()+"', "
+                    + " '"+hojaDeVida.getTipoEquipo()+"', '"+hojaDeVida.getFormaAdquisicion()+"', '"+hojaDeVida.getDocumentoAdquisicion()+"', "
+                    + " '"+hojaDeVida.getFechaCompra()+"', '"+hojaDeVida.getActaRecibido()+"', '"+hojaDeVida.getInstalacion()+"',"
+                    + "  '"+hojaDeVida.getInicioOperacion()+"', '"+hojaDeVida.getVencGarantia()+"', '"+hojaDeVida.getFabricacion()+"', "
+                    + " '"+hojaDeVida.getCosto()+"', '"+hojaDeVida.getVidaUtil()+"', '"+hojaDeVida.getProveedor()+"', "
+                    + " '"+hojaDeVida.getTelProveedor()+"', '"+hojaDeVida.getCorreoProveedor()+"', '"+hojaDeVida.getRepresentante()+"', "
+                    + " '"+hojaDeVida.getTelRepresentante()+"', '"+hojaDeVida.getCorreoRepresentante()+"', '"+hojaDeVida.getFabricante()+"', "
+                    + " '"+hojaDeVida.getTelFabricante()+"', '"+hojaDeVida.getPasFabricante()+"', "
+                    + " '"+hojaDeVida.getFuenteAlimentacion()+"', '"+hojaDeVida.getTecPredominante()+"', '"+hojaDeVida.getVoltajeMax()+"', "
+                    + " '"+hojaDeVida.getVoltajeMin()+"', '"+hojaDeVida.getCorrienteMax()+"', '"+hojaDeVida.getCorrienteMin()+"', "
+                    + " '"+hojaDeVida.getPotencia()+"', '"+hojaDeVida.getFrencuencia()+"', '"+hojaDeVida.getPresion()+"', "
+                    + " '"+hojaDeVida.getVelocidad()+"', '"+hojaDeVida.getPeso()+"', '"+hojaDeVida.getTemperatura()+"', "
+                    + " '"+hojaDeVida.getOtros()+"', '"+hojaDeVida.getRangoVoltaje()+"', '"+hojaDeVida.getRangoCorriente()+"',"
+                    + "  '"+hojaDeVida.getRangoPotencia()+"', '"+hojaDeVida.getFrecuencia2()+"', '"+hojaDeVida.getRangoPresion()+"',"
+                    + "  '"+hojaDeVida.getRangoVelocidad()+"', '"+hojaDeVida.getRangoTemperatura()+"', '"+hojaDeVida.getPeso2()+"', "
+                    + " '"+hojaDeVida.getRangoHumedad()+"', '"+hojaDeVida.getOtrasRecomendaciones()+"', '"+hojaDeVida.getManuales()+"', "
+                    + " '"+hojaDeVida.getPlanos()+"', '"+hojaDeVida.getClasificacionBiomedica()+"', '"+hojaDeVida.getClasificacionRiesgo()+"',"
+                    + "  '"+hojaDeVida.getPeriodicidadMantenimiento()+"', '"+hojaDeVida.getRequiereCalibracion()+"', '"+hojaDeVida.getPeriodicidadCalibracion()+"', "
+                    + " '"+hojaDeVida.getRegistroSanitario()+"', '"+hojaDeVida.getPermisoComercializacion()+"', '"+hojaDeVida.getRegistroImportacion()+"', "
+                    + " '"+hojaDeVida.getFactura()+"', '"+hojaDeVida.getIngresoAlmacen()+"', '"+hojaDeVida.getActaReciboSatisfacionPrestador()+"',"
+                    + " '"+hojaDeVida.getProtocoloMantenimientoPreventivo()+"', '"+hojaDeVida.getCronogramaMantenimientoGarantia()+"', '"+hojaDeVida.getGuiaRapidaOperacion()+"',"
+                    + " '"+hojaDeVida.getActaReciboSatisfacionOperador()+"', "
+                    + "  '"+hojaDeVida.getRecomendacionesFrabricanteUsoAccesoriosConsumibles()+"', '"+hojaDeVida.getRecomendacionesFabricanteCalibracion()+"', '"+hojaDeVida.getEstimativoCostoAccesoriosConsumibles()+"');";
 
             System.out.println("sql: " + sql);
 
             st.execute(sql);
 
-            inv++;
+            hoja++;
 
         } catch (Exception e) {
 
@@ -91,7 +92,7 @@ public class HojaDeVidaController {
             ConexionSQL.CerrarConexion();
         }
 
-        return inv;
+        return hoja;
 
     }
     
