@@ -92,7 +92,7 @@ public class CargaMasivaHojaDeVida extends javax.swing.JFrame {
                         vn.setVisible(false);
                     }
 
-                    LeerArchivoDeExcel lae = new LeerArchivoDeExcel();
+//                    LeerArchivoDeExcel lae = new LeerArchivoDeExcel();
 //                            try {
 //                                lae.CargaDeFormularios(ruta.getText());
 //                            } catch (IOException ex) {
@@ -239,28 +239,28 @@ public class CargaMasivaHojaDeVida extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-//
-//        try {
-//            
-//          
-//            int valor = LeerArchivoDeExcel.RegistrarInventario(lPath.getText());
-//
-//            if (valor > 0) {
-//                JOptionPane.showMessageDialog(null, "Registro realizado satisfactoriamente");
-//
-//                l_nombre.setText("");
-//                bAceptar.setEnabled(false);
-//               
-//
-//            }
-//
-//        } catch (IOException ex) {
-//            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (Exception ex) {
-//            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
+        try {
+            
+          
+            int valor = LeerArchivoDeExcel.RegistrarHojaDeVidas(lPath.getText());
+
+            if (valor > 0) {
+                JOptionPane.showMessageDialog(null, "Registro realizado satisfactoriamente");
+
+                l_nombre.setText("");
+                bAceptar.setEnabled(false);
+               
+
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(CargaMasivaHojaDeVida.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_bAceptarActionPerformed
 

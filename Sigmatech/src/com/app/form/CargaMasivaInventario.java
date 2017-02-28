@@ -97,7 +97,7 @@ public class CargaMasivaInventario extends javax.swing.JFrame {
                         vn.setVisible(false);
                     }
 
-                    LeerArchivoDeExcel lae = new LeerArchivoDeExcel();
+//                    LeerArchivoDeExcel lae = new LeerArchivoDeExcel();
 //                            try {
 //                                lae.CargaDeFormularios(ruta.getText());
 //                            } catch (IOException ex) {
